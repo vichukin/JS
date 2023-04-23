@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(231, 208, 178);
+        }
+
+        input {
+            width: 150px;
+        }
+
+        button {
+            width: 158px;
+        }
+
+        label {
+            width: 158px;
+            display: inline-block;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+            margin-top: 3px;
+        }
+
+        .line {
+            display: flex;
+
+        }
+
+        #lbl,
+        #lblchoose,
+        #lblskills {
+            display: inline-flex;
+            align-items: flex-end;
+        }
+
+        span {
+            font-size: 16px;
+        }
+
+        .second>input,
+        .second>label {
+            margin-right: 20px;
+        }
+
+        .second>button {
+            width: 340px;
+        }
+
+        
+
+        .Third>input,.Third>label {
+            width: 200px;
+            margin-right: 20px;
+        }
+        .Third>label {
+            width: 208px;
+        }
+        .Third>button{
+            width: 440px;
+        }
+        table,tr,td{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        #rgb>label{
+            width: auto;
+        }
+        #rgb>input{
+            width: 50px;
+        }
+        #color{
+            width: 227px;
+            margin-top: 2px;
+        }
+        #questions>label{
+            width: 110px;
+        }
+        #questions>button{
+            width: 272px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>First</h1>
+    <form>
+        <div>
+            <label>Your login:</label>
+            <br>
+            <input type="text" id="log">
+            <br>
+            <label>Your password:</label>
+            <br>
+            <input type="password" name="" >
+            <br>
+            <label id="lbl"><span>Remember me </span><input type="checkbox" id="ch"></label>
+
+            <br>
+            <button onclick="first()">Sign in</button>
+        </div>
+    </form>
+    <hr>
+    <h1>Second</h1>
+    <form >
+        <div>
+            <div class="second">
+                <label>Your email:</label>
+                <label>Your login:</label>
+                <br>
+                <input type="email" id="mail">
+                <input type="text">
+                <br>
+                <br>
+                <label>Your password:</label>
+                <label>Repeat password:</label>
+                <br>
+                <input type="password" id="pas1">
+                <input type="password" id="pas2">
+                <br>
+                <br>
+                <button onclick="Second()"> Sign in</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <h1>Third</h1>
+    <form> 
+        <div>
+            <div class="Third" id="third">
+                <label>Firstname:</label>
+                <label>Lastname:</label>
+                <br>
+                <input type="text" name="Firstname">
+                <input type="text" name="Lastname">
+                <br>
+                <br>
+                <label>Birthday:</label>
+                <br>
+                <input type="date" name="Birthday">
+                <label id="lblchoose">Gender: <input type="radio" value="Male" id="gender1"
+                        name="sex"><label>Male</label><input type="radio" value="female" id="gender2"
+                        name="sex"><label>Female</label></label>
+                <br>
+                <br>
+                <label>Country:</label>
+                <label>City:</label>
+                <br>
+                <input type="text" name="Country">
+                <input type="text" name="City">
+                <br>
+                <br>
+                <label id="lblskills">Skills:
+                    <input type="checkbox" name="C#">
+                    <label>C# </label>
+                    <input type="checkbox" name="HTML" >
+                    <label>HTML </label>
+                    <input type="checkbox" name="CSS">
+                    <label >CSS</label>
+                    <input type="checkbox" name="JS" >
+                    <label >JS</label>
+                    <input type="checkbox" name="PHP" >
+                    <label>PHP</label>
+                    <input type="checkbox" name="C++" >
+                    <label>C++</label>
+                    <input type="checkbox"name="JAVA" >
+                    <label>JAVA</label>
+                </label>
+                <br>
+                <br>
+            </div>
+        </div>
+    </form>
+    <button onclick="Third()"> Sign in</button>
+    <p>Result:</p>
+    <p id="result"></p>
+
+
+    <hr>
+    <h1>Fourth</h1>
+    <form onsubmit="return false">
+        <div id="rgb">
+            <label>R</label>
+            <input type="number" name="" max="255" min="0">
+            <label>G</label>
+            <input type="number" name="" max="255" min="0">
+            <label>B</label>
+            <input type="number" name="" max="255" min="0">
+            
+        </div>
+        <button id="color" onclick="fourth()">Add color</button>
+        <div id="colors" style="margin-top: 5px;"></div>
+    </form>
+
+    <hr>
+    <h1>Fifth</h1>
+    <form onsubmit="return false;">
+    <h3>Add new question:</h3>
+    <div id="questions">
+    <label>Question:</label>
+    <input type="text">
+    <br>
+    <br>
+    <label>Correct answer:</label>
+    <input type="text">
+    <br>
+    <br>
+    <label>Wrong answer:</label>
+    <input type="text">
+    <br>
+    <br>
+    <button onclick="Fifth()">Add</button>
+    <hr>
+    <h3>All questions:</h3>
+    <div id="quests">
+    
+    </div>
+    </div>
+    </form>
+    <script>
+        function first() {
+            let txt = document.getElementById("log");
+            let ch = document.getElementById("ch");
+            if (ch.checked)
+                alert(`Hello, ${log.value}! I remember you`);
+            else
+                alert(`Hello, ${log.value}! I don't remember you`);
+        }
+        function Second() {
+            let pas1 = document.getElementById("pas1");
+            let pas2 = document.getElementById("pas2");
+            let mail = document.getElementById("mail")
+            if (pas1.value == pas2.value)
+                alert(`We sent a code on ${mail.value}`);
+            else
+                alert(`Passwords don't match!`);
+            
+        }
+        class User{
+            constructor(name,sur,birth,gender,count,city,skills)
+            {
+                this.Firstname = name;
+                this.Surname=sur;
+                this.Birthday=birth;
+                this.Gender = gender;
+                this.Country=count;
+                this.City=city;
+                this.Skills = skills;
+            }
+            Show()
+            {
+                let str="";
+                str+=`<table style='border:2px solid black;'>`;
+                str+=`<tr><td>Firstname</td><td>${this.Firstname}</td></tr>`;
+                str+=`<tr><td>Surname</td><td>${this.Surname}</td></tr>`;
+                str+=`<tr><td>Birthday</td><td>${this.Birthday}</td></tr>`;
+                str+=`<tr><td>Country</td><td>${this.Country}</td></tr>`;
+                str+=`<tr><td>City</td><td>${this.City}</td></tr>`;
+                str += `<tr><td>Skills</td><td>`;
+                for(item of this.Skills)
+                    str+=`${item} `
+                str+=`</td></tr>`
+                str+=("</table>");
+                let p = document.getElementById("result");
+                p.innerHTML=str;
+            }
+        } 
+        function Third()
+        {
+            let div = document.getElementById("third").children;
+            let lbl = document.getElementById("lblskills");
+            let genders = document.getElementsByName("sex");
+            let gender="";
+            for(item of genders)
+                if(genders.checked)
+                    gender=item.value;
+            let ar =[];
+            for(item of lbl.children)
+                if(item.checked)
+                    ar.push(item.name);
+            user = new User(div[3].value,div[4].value,div[9].value,gender,div[16].value,div[17].value,ar);
+            user.Show();
+            console.log(user.Firstname);
+        }  
+        function fourth()
+        {
+            let div = document.getElementById("rgb").children;
+            let r = div[1].value;
+            let g = div[3].value;
+            let b = div[5].value;
+            let str =`<div style=" width: 150px; display: inline-flex; align-items: center; border: 1px solid black; margin-right:2px; height: 26px;">
+                    <div style="width: 40px; background-color: rgb(${r}, ${g}, ${b}); height: 25px; margin-right: 2px;"> </div>
+                    <p>RGB(${r},${g},${b})</p>
+                    </div>`;
+            let col = document.getElementById("colors");
+            col.innerHTML+=str;
+        }
+        function Fifth()
+        {
+            let div = document.getElementById("questions").children;
+            let ques = div[1].value;
+            let cansw = div[5].value;
+            let wansw = div[9].value;
+            let str=`<div style="text-align: left;">
+        <p style="text-decoration: underline;">${ques}</p>
+        <p>Correct answer: ${cansw}</p>
+        <p style="margin-bottom: 1px;">Wrong answer: ${wansw}</p>
+        <hr style="width: 200px; display: inline-block; margin-top: 1px; background-color: black; border: 1px solid;">
+        </div>`
+            let quests = document.getElementById("quests");
+            quests.innerHTML+=str;  
+        }
+    </script>
+    
+</body>
+
+</html>

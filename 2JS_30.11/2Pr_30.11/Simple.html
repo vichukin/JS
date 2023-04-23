@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function first(x, y) {
+            return x < y ? x : y;
+        }
+        function second(x, y) {
+            return `${x}^${y} = ${x ** y}`;
+        }
+        function third(x, y, zn) {
+            switch (zn) {
+                case '+':
+                    return `${x} ${zn} ${y} = ${x + y}`;
+                    break;
+                case '-':
+                    return `${x} ${zn} ${y} = ${x - y}`;
+                    break;
+                case '/':
+                    return `${x} ${zn} ${y} = ${x / y}`;
+                    break;
+                case '*':
+                    return `${x} ${zn} ${y} = ${x * y}`;
+                    break;
+                default:
+                    return "Uknown action";
+                    break;
+            }
+        }
+        function fifth(x) {
+            if (x > 0 && x < 10) {
+                let str = "";
+                for (i = 0; i < 10; i++) {
+                    str += `${x} * ${i} = ${x * i}\r\n`
+
+                }
+                return str;
+            }
+        }
+        function seventh() {
+            if (arguments.length == 5) {
+                let sum = 0;
+                for (i = 0; i < arguments.length; i++) {
+                    sum += arguments[i];
+                }
+                return `sum of 5 numbers = ${sum}`;
+            }
+        }
+        function nineth(x, y, bool) 
+        {
+            let str = "";
+            for (i = x; i <= y; i++) 
+            {
+                if( i%2==0 && bool )
+                {
+                    
+                    str+=`${i} `;
+                }
+                else if( i%2!=0 && !bool)
+                {
+                    str+=`${i} `;
+                }
+
+            }
+            return str;
+        }
+        console.log(`min: ${first(5, 8)}`);
+        console.log(`min: ${first(10, 3)}`);
+        console.log(`min: ${first(4, 6)}`);
+
+        console.log(second(2, 3));
+        console.log(second(5, 5));
+        console.log(second(2, 10));
+
+        console.log(third(1, 2, '-'));
+        console.log(third(3, 6, '+'));
+        console.log(third(10, 5, '/'));
+        console.log(third(6, 12, '*'));
+        console.log(third(1, 2, 'tut'));
+
+        console.log(fifth(5));
+        console.log(fifth(2));
+
+        console.log(seventh(1, 2, 3, 4, 5))
+        console.log(seventh(199, 242, 251, 62, 1))
+
+        console.log(nineth(25,100,true));
+        console.log(nineth(25,100,false));
+
+    </script>
+</body>
+
+</html>

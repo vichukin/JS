@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Figure{
+            constructor(a,b)
+            {
+                this._name = "Фигура";
+                this.a=a;
+                this.b=b;
+            }
+            get name()
+            {
+                return this._name;
+            }
+            get S()
+            {
+                return this.FindS();
+            }
+            get P()
+            {
+                return this.FindP();
+            }
+            FindS(){}
+            FindP(){}
+        }
+        class Rectangle extends Figure{
+            constructor(a,b)
+            {
+                super(a,b);
+                this._name="Rectangle";
+            }
+            FindP()
+            {
+                return `P=a*2+b*2=${this.a}*2+${this.b}*2=${this.a*2+this.b*2}`;
+            }
+            FindS()
+            {
+                return `S=a*b=${this.a}*${this.b}=${this.a*this.b}`;
+            }
+        }
+        class Triangle extends Figure{
+            constructor(a,b,c)
+            {
+                super(a,b);
+                this.c = c;
+                this._name="Triangle";
+            }
+            FindP()
+            {
+                return `P=a+b+c=${this.a}+${this.b}+${this.c}=${this.a+this.b+this.c}`;
+            }
+            FindS()
+            {
+                let p = (this.a+this.b+this.c)/2;
+                return `S=sqrt(p*(p-a)*(p-b)*(p-c))=sqrt(${p}*(${p}-${this.a})*(${p}-${this.b})*(${p}-${this.c}))=sqrt(${p}*${p-this.a}*${p-this.b}*${p-this.c})=sqrt(${p*(p-this.a)*(p-this.b)*(p-this.c)})=${Math.sqrt(p*(p-this.a)*(p-this.b)*(p-this.c)).toFixed(2)}`;
+            }
+        }
+        class Square extends Figure{
+            constructor(a)
+            {
+                super(a,a);
+                this._name="Square";
+            }
+            FindP()
+            {
+                return `P=a*4=${this.a}*4=${this.a*4}`;
+            }
+            FindS()
+            {
+                return `S=a*a=${this.a}*${this.a}=${this.a*this.b}`;
+            }
+        }
+        let figures =[];
+        let trian = new Triangle(5,6,7);
+        let rect = new Rectangle(5,6);
+        let square = new Square(5);
+        figures.push(trian,rect,square);
+        for(let fig of figures)
+        {
+            console.log(fig.name);
+            console.log(fig.S);
+            console.log(fig.P);
+            console.log("--------------------")
+        }
+    </script>
+</body>
+</html>

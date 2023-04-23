@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function First(arr)
+        {
+            arr.sort((a,b)=>a.Buyed-b.Buyed);
+            console.log("---Your list---")
+            arr.forEach(t=>console.log(`${t.Name} - ${t.Count} - Buyed: ${t.Buyed}`));
+            console.log("---------------")
+        }
+        function Second(arr,prod)
+        {
+            console.log(`Product for add: ${prod.Name} - ${prod.Count} - Buyed: ${prod.Buyed}`)
+            let consist = false;
+            arr.forEach(t=>{
+                if(t.Name==prod.Name)
+                {
+                    t.Count+=prod.Count;
+                    consist=true;
+                }
+            })
+            if(consist==false)
+            arr.push(prod);
+        }
+        function Third(arr, prod)
+        {
+            let item = arr.find(t=>t.Name==prod);
+            if(item.Buyed==true)
+                console.log(`${prod} already bought`);
+            else
+            {
+                item.Buyed=true;
+                console.log(`${prod} was bought`);
+            }
+            
+
+        }
+        function Product(name,count,buyed)
+        {
+            this.Name = name;
+            this.Count = count;
+            this.Buyed = buyed;
+        }
+        let pr = new Product('Pomidor',10,false);
+        let pr1 = new Product('Apple',5,true);
+        let pr2 = new Product('Laptop',6,false);
+        let pr3 = new Product('Desc',2,true);
+        let pr4 = new Product('Table',4,true);
+        let ListOfProducts = [];
+        ListOfProducts.push(pr,pr1,pr2,pr3,pr4);
+        First(ListOfProducts);
+        
+        let pr5 = new Product('Desc',10,true);
+        let pr6 = new Product('Dino',8,false);
+        Second(ListOfProducts, pr5);
+        Second(ListOfProducts, pr6);
+        First(ListOfProducts);
+
+        Third(ListOfProducts,"Dino");
+        Third(ListOfProducts,"Desc");
+        First(ListOfProducts);
+    </script>
+</body>
+</html>

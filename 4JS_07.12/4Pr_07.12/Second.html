@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function ShowArr(arr){
+            for(item of arr)
+            console.log(item);
+        }
+        function First(arr,arr1)
+        {
+                
+            let arr2= [];
+            for(item of arr)
+            {
+                arr2.push(item);
+            }
+            for(item of arr1)
+            {
+                let buf = false;
+                for(item1 of arr)
+                {
+                    if(item==item1)
+                    {
+                        buf=true;
+                        break;
+                    }
+                    else
+                    buf=false;
+                }
+                if(buf==false)
+                    arr2.push(item);
+            }
+            return arr2;
+        }
+        function Second(arr,arr1)
+        {
+            let arr2= [];
+            for(item of arr)
+            {
+                let buf = false;
+                for(item1 of arr1)
+                {
+                    if(item==item1)
+                    {
+                        buf=true;
+                        break;
+                    }
+                    else
+                    buf=false;
+                }
+                if(buf==true)
+                    arr2.push(item);
+            }
+            return arr2;
+        }
+        function Third(arr,arr1)
+        {
+            let arr2= [];
+            for(item of arr)
+            {
+                let buf = false;
+                for(item1 of arr1)
+                {
+                    if(item==item1)
+                    {
+                        buf=true;
+                        break;
+                    }
+                    else
+                    buf=false;
+                }
+                if(buf==false)
+                    arr2.push(item);
+            }
+            return arr2;
+        }
+        let arr = [];
+        for(let i =0;i<10;i++)
+        {
+            arr[i]=Math.floor(Math.random() * 50);
+        }
+
+        let arr1 = [];
+        for(let i =0;i<5;i++)
+        {
+            arr1[i]=Math.floor(Math.random() * 50);
+        }
+
+        console.log("First array:");
+        ShowArr(arr);
+        console.log("Second array:");
+        ShowArr(arr1);
+        arr2 = First(arr,arr1);
+        console.log("Third array:");
+        ShowArr(arr2); 
+        arr3 = Second(arr,arr1);
+        console.log("Fourth array:");
+        ShowArr(arr3);  
+        arr4 = Third(arr,arr1);
+        console.log("Fifth array:");
+        ShowArr(arr4);  
+
+    </script>
+</body>
+</html>

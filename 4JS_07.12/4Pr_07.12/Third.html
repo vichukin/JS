@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function First(arr)
+        {
+            document.write("<ul>");
+            for(item of arr)
+                document.write(`<li>${item}</li>`);
+            document.write("</ul>");
+        }
+        function Second(arr,name)
+        {
+            return arr.indexOf(name);
+        }
+
+        let fruits = ["Apple","Banana","Watermelon","Orange","Melon"];
+        document.write("Before sort");
+        First(fruits);
+        fruits.sort();
+        document.write("After sort");
+        First(fruits);
+        
+        console.log(`index of Watermelon ${Second(fruits,"Watermelon")}`);
+        console.log(`index of fruit ${Second(fruits,"fruit")}`);
+
+    </script>
+</body>
+</html>

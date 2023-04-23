@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .first{
+            text-align: center;
+            width: 200px;
+        }
+        .Second{
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .nineth>button
+        {
+            width: 100px;
+            height: 50px;
+        }
+        #prog{
+            width: 100px;
+            height: 50px;
+            border: 2px solid black;
+        }
+        #bar{
+            /* width: 5px; */
+            height: 50px;
+            margin: 0;
+            padding: 0;
+            background-color: aquamarine;
+        }
+        .sixth>button{
+            width: 104px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>First</h1>
+    <div class="first">
+        <p>Random number</p>
+        <h3 id="fh">0</h3>
+        <button onclick="First()" >Generate random number</button>
+    </div>
+    <hr>
+    <h1>Second</h1>
+    <div class="Second" onpointermove="Second(event)" onclick="SecondS(event)" oncontextmenu="document.getElementById('click').innerText =`Right click`; return false;">
+        <label id="x"></label>
+        <label id="y"></label>
+        <label id="click"></label>
+    </div>
+    <hr>
+    <h1>Sixth</h1>
+    <div class="sixth">
+        <div id="prog">
+            <div id="bar" style="Width: 5px;"></div>
+        </div>
+        <button onclick="Sixth()">Add 5%</button>
+    </div>
+    <hr>
+    <h1>Eighth</h1>
+    <div>
+        <p oncontextmenu="return false" onmousedown="return false" onselect="return false" ondrag="return false">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nostrum necessitatibus aspernatur ipsum autem magnam, consectetur quos nesciunt fuga, quasi debitis fugit nobis sint atque vel rem. Libero, impedit iste doloremque ea, et commodi ad aliquam assumenda officiis provident a hic quis tempore quibusdam natus adipisci pariatur iusto amet voluptatem vero! Debitis voluptatem deserunt ea quaerat aperiam recusandae maxime animi soluta dolorum, at magni illum voluptates ratione possimus, assumenda expedita totam optio, repudiandae voluptatum reprehenderit aut? Quas illo quidem debitis ipsam nisi, autem impedit similique, perferendis excepturi, ut ipsum voluptatem aperiam minima repellat veniam ratione aut molestias eligendi ducimus laudantium?</p>
+    </div>
+    <hr>
+    <h1>Nineth</h1>
+    <div class="nineth">
+        <button onclick="Nineth(event)">Like: 0</button>
+    </div>
+    <script>
+        function First()
+        {
+            document.getElementById("fh").textContent=Math.floor(Math.random() * 100);
+        }
+        function Second(e)
+        {
+            document.getElementById("x").innerText =`X = ${Math.floor(e.pageX,0)}`;
+            document.getElementById("y").innerText =`Y = ${Math.floor(e.pageY,0)}`;
+        }
+        function SecondS(e)
+        {
+            document.getElementById("click").innerText =`Left click`;
+        }
+        function Nineth(e)
+        {
+            let n = +e.target.textContent.slice(6);
+            e.target.textContent = e.target.textContent.replace(`${n}`,`${++n}`);
+        }
+        function Sixth()
+        {
+            let bar = document.getElementById("bar");
+            let n = +bar.style.width.replace("px","");
+            if(n<100)
+            {
+                bar.style.width=`${n+5}px`;
+            }
+            else
+            {
+                alert("100% Complete");
+            }
+        }
+    </script>
+</body>
+</html>

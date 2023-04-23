@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Print(arr)
+        {
+            console.log(`---Your check---`)
+            arr.forEach(t=>console.log(`${t.Name} ${t.Count} - ${t.Price}$ = ${t.Count*t.Price}$`));
+            console.log(`----------------`)
+            let sum = arr.reduce((cal,item)=>cal+=item.Price*item.Count,0)
+            console.log(`Total price: ${sum}$`);
+            let max = 0;
+            arr.forEach(t=>{
+                if(max<t.Count*t.Price)
+                    max = t.Count*t.Price;
+            })
+            console.log(`Max bought ${max}$`);
+            console.log(`AVG ${sum/arr.length}$`);
+        }
+        function Product(name,count,price)
+        {
+            this.Name = name;
+            this.Count = count;
+            this.Price = price;
+        }
+        let pr = new Product('Pomidor',10,10);
+        let pr1 = new Product('Apple',5,5);
+        let pr2 = new Product('Laptop',6,1000);
+        let pr3 = new Product('Desc',2,300);
+        let pr4 = new Product('Table',4,600);
+        let Check = [];
+        Check.push(pr,pr1,pr2,pr3,pr4);
+        Print(Check);
+    </script>
+</body>
+</html>

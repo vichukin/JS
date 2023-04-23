@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function First(fstr,sstr)
+        {
+            if(fstr.length>sstr.length)
+                return 1;
+            else if(fstr.length<sstr.length)
+                return -1;
+            else
+                return 0;
+        }
+        function Second(str)
+        {
+            let newstr =str[0].toUpperCase();
+            newstr+=str.slice(1);
+            return newstr;
+        }
+        function Third(str)
+        {
+            let a ='aeiouy'
+            let count=0;
+            for(char of str)
+            {
+                if(a.indexOf(char)!=-1)
+                    count++;
+                
+            }
+            return count;
+        }
+        function Sixth(str)
+        {
+            let a =0;
+            let substr='';
+            if(str.length%2==0)
+            {
+                a=str.length/2;
+                substr = str.slice(a).split("").reverse().join("");
+                
+            }
+            else
+            {
+                a=(str.length/2).toFixed(0);
+                substr = str.slice(a-1).split("").reverse().join("");
+            }
+            if(substr==str.substr(0,a))
+                    return "The number is palindrome";
+                else
+                   return "The number is NOT palindrome";
+        }
+        function Seventh(str)
+        {   
+            return str.split(" ").length;
+        }
+        console.log(First("asd","asfg"));
+        console.log(First("asdg","asf"));
+        console.log(First("asd","asf"));
+        console.log(Second("hello"));
+        console.log(Third("Hello world"));
+        console.log(Sixth("12321"));
+        console.log(Sixth("1221"));
+        console.log(Sixth("123421"));
+        console.log(Seventh("hello world, my name is dima"))
+    </script>
+</body>
+</html>

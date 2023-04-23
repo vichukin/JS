@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str='1234567890';
+        let str1='qwertyuiopasdfghjklzxcvbnm';
+        for(char of str1.toUpperCase())
+        {
+            // console.log(`${char} = ${char.codePointAt(0)}`);
+            
+            //97-122
+            //65-90
+            //48-57
+        }
+        function First(str)
+        {
+            let num=0;
+            let lett=0;
+            let symb=0;
+            for(char of str.toLowerCase())
+            {
+                let a =char.codePointAt(0);
+                if(a>=97&&a<=122)
+                {
+                    lett++;
+                }
+                else if(a>=48&&a<=57)
+                {
+                    num++;
+                }
+                else
+                    symb++;
+                
+            }
+            console.log(str);
+            console.log( `Numbers: ${num}`);
+            console.log(`Letters: ${lett}`);
+            console.log(`Symbols: ${symb}`);
+            console.log('------------------------------');
+        }
+        function Third(str)
+        {
+            console.log(`Before: ${str}`);
+            let newstr='';
+            for(char of str)
+            {
+                a = char.codePointAt(0);
+                if(a>=97&&a<=122)
+                {
+                    char =char.toUpperCase();
+                }
+                else if(a>=48&&a<=57)
+                {
+                    char='_';
+                }
+                else if(a>=65&&a<=90)
+                    char = char.toLowerCase();
+                newstr+=char;
+            }
+            console.log(`After: ${newstr}`);
+            console.log('------------------------------');
+        }
+        function Fifth(str)
+        {
+            let strs = str.split(new RegExp("-| "));
+            let string='';
+            for(st of strs)
+            {
+                string+=st[0].toUpperCase();
+            }
+            console.log(`${str} = ${string}`);
+            console.log('------------------------------');
+        }
+        function Sixth()
+        {
+            let str = '';
+            for(string of arguments)
+            {
+                str=str.concat(string," ");
+            }
+            console.log(str);
+            console.log('------------------------------');
+        }
+        function Nineth(str,separator)
+        {
+            let arstr=[];
+            buf = str.indexOf(separator);
+            while(buf!=-1)
+            {
+                arstr.push(str.slice(0,buf));
+                str = str.slice(buf+1);
+                buf = str.indexOf(separator);
+            }
+            arstr.push(str);
+            return (arstr);
+        }
+        First("Hello World!?#@ 1234");
+        Third("Hello World!?#@ 1234");
+        Fifth("cascading style sheets");
+        Fifth("об’єктно-орієнтоване програмування");
+        Sixth("one","two","three","four");
+        console.log(Nineth("asd/sss/fds/asf/sds","/"));
+    </script>
+</body>
+</html>

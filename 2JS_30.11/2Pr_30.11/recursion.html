@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function first(n) {
+            if (n === 1)
+                return 1;
+            return n * factorial(n - 1);
+        }
+        function second(x,y)
+        {
+            if(x>y)
+                return "";
+            else
+                return x+" "+second(x+1,y);
+        }
+        function secondreverse(x,y)
+        {
+            if(x>y)
+                return "";
+            else
+                return y+" "+ secondreverse(x,y-1);
+        }
+        function third(x)
+        {
+            if(x==0)
+            return "";
+            else
+            return x%10+""+third(Math.floor(x/10));
+        }
+        function fourth(x)
+        {
+            if(x==0)
+            return 0;
+            else
+            return x%10+fourth(Math.floor(x/10));
+        }
+        function fifth(x)
+        {
+            return fifthleft(x)+fifthright(x);
+        }
+        function fifthleft(x)
+        {
+            if(x==0)
+            return "";
+            else
+            return "("+fifthleft(x-1);
+        }
+        function fifthright(x)
+        {
+            if(x==0)
+            return "";
+            else
+            return ")"+fifthright(x-1);
+        }
+
+        console.log(second(25,100));
+        console.log(secondreverse(25,100));
+
+        console.log(third(1234));
+        console.log(third(1001));
+        console.log(third(1000000123));
+
+        console.log(fourth(1234));
+        console.log(fourth(1357));
+        console.log(fourth(9478));
+
+        console.log(fifth(5));
+    </script>
+</body>
+</html>

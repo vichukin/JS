@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img{
+            width: 700px;
+            height: 700px;
+        }
+        #cat{
+            position: absolute;
+            width: 100px;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+ <img id="img" src="road.jpg">
+ <img id="cat" src="favpng_cat-kitten-cartoon-drawing-clip-art.png">
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(()=>{
+            $("#img").bind("mousemove",(e)=>{
+                // console.log(event.pageX);
+                console.log();
+                // console.log("sda");
+                if(e.pageX>e.target.clientWidth-80)
+                {
+                    $("#cat").css("left",e.pageX-80);
+                }
+                else
+                {
+                    $("#cat").css("left",e.pageX);
+                }
+                if(e.pageY>e.target.clientHeight-80)
+                {
+                    $("#cat").css("top",e.pageY-80);
+                }
+                else
+                {
+                    $("#cat").css("top",e.pageY);
+                }
+            })
+            
+        })
+    </script>
+</body>
+</html>

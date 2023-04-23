@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            color:white;
+        }
+        .left{
+            top: 0;
+            left: 0;
+            width: 80px;
+            position: fixed;
+            background-color: rgb(72, 69, 69);
+            height: 100vh;
+            display: inline-grid;
+            grid-template-rows: repeat(10,10%);
+        }
+        .right{
+            top: 0;
+            left: 80px;
+            width: 80px;
+            position: fixed;
+            background-color: rgb(72, 69, 69);
+            height: 100vh;
+            display: inline-grid;
+            grid-template-rows: repeat(10,10%);
+            
+        }
+        a{
+            padding-top: 22px;
+            padding-left: 5px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        img{
+            width: 65px;
+            height: 65px;
+        }
+        h3{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <h3>Menu</h3>
+        <img src="icons8-pencil-64.png" class="penc">
+        <img src="icons8-favorite-48.png" class="fav">
+        <img src="icons8-time-span-48.png" class="hist">
+        <img src="icons8-security-lock-48.png" class="sec">
+        <img src="icons8-favorite-48.png" class="set">
+    </div>
+    <div class="right">
+        <h3></h3>
+        <a class="fra" href="#">Edit</a>
+        <a class="sca" href="#">Favorites</a>
+        <a class="tha" href="#">History</a>
+        <a class="fta" href="#">Security</a>
+        <a class="fha" href="#">Settings</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+       $(()=>{
+        $(".right").hide();
+        $(".left").bind("mouseover",(e)=>
+        {
+            $(".right").show("fast");
+        });
+
+       $(".right").bind("mouseout",(e)=>
+        {
+            if(e.pageX>159)
+            {
+                $(".right").hide("fast");
+            }
+
+        });
+        
+        $("a").bind("mouseover",(e)=>
+        {
+            $(e.target).css("background-color","rgb(54, 53, 53)")
+        });
+        $("a").bind("mouseout",(e)=>
+        {
+            $(e.target).css("background-color","rgb(72, 69, 69)")
+        });
+       })
+    </script>
+</body>
+</html>

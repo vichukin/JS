@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ["I","learn","JavaScript"];
+        ////Example1
+        // let deleted= arr.splice(1,1);
+        // alert(arr);
+        // console.log(deleted);
+
+        ////Example2
+        // arr.splice(1,2,"want","to",["dance","right","now"]);
+        // alert(arr);
+        
+        ////Example3
+        // let deleted = arr.splice(3,0,["right","now"])
+        // alert(arr);
+        // console.log(deleted.length);
+
+        let res = arr.slice(0,2);
+        console.log(res);
+        console.log(arr);
+
+        let resarr = arr.concat(["rigth","now"],"cool!");
+        console.log(arr);
+        console.log(resarr);
+    </script>
+</body>
+</html>

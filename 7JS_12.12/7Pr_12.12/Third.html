@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class ExtentedArray extends Array{
+            constructor(args)
+            {
+                super(arguments);
+
+            }
+            getString(separator){
+                let str='';
+                for(let ar of this)
+                {
+                    for(let item of ar)
+                    {
+                    str+=`${item}${separator}`;
+                    }
+                }
+                console.log(str);
+            }
+            getHtml(tagName)
+            {
+                let str='';
+                if(tagName=="li")
+                {
+                    str='<ul>';
+                }
+                for(let ar of this)
+                {
+                    for(let item of ar)
+                    {
+                        
+                        str+=`<${tagName}>${item}</${tagName}>`;
+                    }
+                    
+                }
+                if(tagName=="li")
+                {
+                    str+="</ul>";
+                }
+                document.write(str);
+            }
+        }
+        let ar = new ExtentedArray(1,2,"sd",4,"edgd",6,"sad",8);
+        ar.getString(" ");
+        ar.getHtml("li");
+    </script>
+</body>
+</html>

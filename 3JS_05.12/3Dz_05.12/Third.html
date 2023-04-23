@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function toString()
+            {
+                let hour = Math.floor(this.Second/3600);
+                let Min = Math.floor(this.Second%3600/60);
+                let Sec = Math.floor(this.Second%3600%60);
+                if(hour<=0||isNaN(hour)||hour>24)
+                {
+                    hour =`00`;
+                }
+                else if(hour<10)
+                {
+                    hour = `0${hour}`;
+                }
+                else
+                {
+                    hour=`${hour}`;
+                }
+                if(Min<=0||isNaN(Min)||Min>60)
+                {
+                    Min =`00`;
+                }
+                else if(Min<10)
+                {
+                    Min = `0${Min}`;
+                }
+                else
+                {
+                    Min=`${Min}`;
+                }
+                if(Sec<=0||isNaN(Sec)||Sec>60)
+                {
+                    Sec =`00`;
+                }
+                else if(Sec<10)
+                {
+                    Sec = `0${Sec}`;
+                }
+                else
+                {
+                    Sec=`${Sec}`;
+                }
+                return `${hour}:${Min}:${Sec}`;
+            }
+        
+        function addSec(num)
+        {
+            this.Second+=num;
+        }
+        function addMin(num)
+        {
+            this.Second+=num*60;
+        }
+        function addHours(num)
+        {
+            this.Second+=num*3600;
+        }
+        function Time(h,m,s)
+        {
+            this.Second = h*3600+m*60+s;
+            this.toString = toString;
+            this.addSec = addSec;
+            this.addMin = addMin;
+            this.addHours = addHours;
+        }
+
+        time = new Time(18,54,12);
+        console.log(time.toString());
+        time.addSec(100);
+        console.log(time.toString());
+        time.addMin(8);
+        console.log(time.toString());
+        time.addHours(3);
+        console.log(time.toString());
+    </script>
+</body>
+</html>

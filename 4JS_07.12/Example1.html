@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = new Array();
+        let arr1 =[];
+        let arr2 =["Apple","Orange","Grape"];
+        console.log(arr2[0]);
+        console.log(arr2[1]);
+        console.log(arr2[2]);
+        arr2[3]=5;
+        arr2[4]={name:"Serhii",Age: 25};
+        console.log(arr2);
+        console.log(arr2[4].name);
+        arr2[5] = function(){
+            console.log("Hello world!");
+        }
+        arr2[5]();
+        arr2[10] = "magic elem";
+        console.log(arr2[10]);
+        console.log(arr2[8]);
+        console.log(arr2.length);
+        arr2.length = 20;
+        console.log(arr2.length);
+        console.log(arr2);
+        arr2.length =4;
+        console.log(arr2)
+        console.log(arr2.length)
+    </script>
+</body>
+</html>

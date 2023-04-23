@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function first(x,y)
+        {
+            if(x>y)
+            {
+                return 1;
+            }
+            else if(x<y)
+            {
+                return  -1;
+            }
+            else if(x==y)
+            {
+                return 0;
+            }
+        }
+        function third(x,y,z)
+        {
+            return parseFloat(`${x}${y}${z}`);
+        }
+        function seventh(x=0,y=0,z=0)
+        {
+            let hours;
+            let min;
+            let sec;
+            if(x<=0||isNaN(x)||x>24)
+            {
+               hours =`00`;
+            }
+            else if(x<10)
+            {
+                hours = `0${x}`;
+            }
+            else
+            {
+                hours=`${x}`;
+            }
+            if(y<=0||isNaN(y)||y>60)
+            {
+                min =`00`;
+            }
+            else if(y<10)
+            {
+                min = `0${y}`;
+            }
+            else
+            {
+                min=`${y}`;
+            }
+            if(z<=0||isNaN(z)||z>60)
+            {
+                sec =`00`;
+            }
+            else if(z<10)
+            {
+                sec = `0${z}`;
+            }
+            else
+            {
+                sec=`${z}`;
+            }
+            return `${hours}:${min}:${sec}`;
+        }
+        function eighth(h,m,s)
+        {
+            let sum=0;
+            sum+=h*3600;
+            sum+=m*60;
+            sum+=s;
+            return sum;
+        }
+        function nineth(s)
+        {
+            let h = (s-s%3600)/3600;
+            let m = (s%3600 - (s%3600)%60)/60;
+            let sec = s - h*3600-m*60;
+            return seventh(h,m,sec);
+        }
+        console.log(first(4,7));
+        console.log(first(7,4));
+        console.log(first(5,5));
+
+        console.log(third(1,2,3));
+        console.log(third(1,4,9));
+
+        console.log(seventh(23,54,12));
+        console.log(seventh(2,0));
+
+        console.log(eighth(23,54,12));
+        console.log(eighth(2,25,12));
+
+        console.log(nineth(86052));
+        console.log(nineth(8712));
+    </script>
+</body>
+</html>

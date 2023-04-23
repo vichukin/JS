@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            text-align: center;
+        }
+        #users>div{
+            border: 2px solid black;
+            width: 170px;
+            margin: 3px;
+            height: 30px;
+            vertical-align: middle;
+
+        }
+        #users{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+        tr,td{
+            border: 2px solid black;
+            width: 200px;
+            padding-left: 5px;
+            text-align: left;
+        }
+        
+        button{
+            width: 418px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        table{
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        #info{
+            text-align: center;
+            
+        }
+        .post{
+            border: 2px solid black;
+            width: 200px;
+            margin: 5px;
+        }
+        #posts{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>All Users:</h1>
+        <div id="users">
+
+        </div>
+        <h1>User info:</h1>
+        <div id="info">
+            <table id="table"></table>
+        </div>
+        
+        <div id="postsmain">
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        var request = new XMLHttpRequest();
+        request.open("get","https://jsonplaceholder.typicode.com/users");
+        request.send();
+        setTimeout(() => { 
+            var users = JSON.parse(request.response);
+            for(user of users)
+            {
+                let dusers = document.getElementById("users");
+                let div = document.createElement("div");
+                div.className="user"
+                div.textContent=user.name;
+                dusers.appendChild(div);
+                div.addEventListener("click",(e)=>
+                {
+                    let req = new XMLHttpRequest();
+                    req.open("get",`https://jsonplaceholder.typicode.com/users?name=${e.target.textContent}`);
+                    req.send();
+                    setTimeout(() => {
+                        document.getElementById("postsmain").innerHTML="";
+                        let users = JSON.parse(req.response);
+                        for(let user of users)
+                        {
+                        let str=(`<tr><td>Name:</td><td>${user.name}</td></tr>`);
+                        str+=(`<tr><td>Username:</td><td>${user.username}</td></tr>`);
+                        str+=(`<tr><td>Address:</td><td>${user.address.street}</td></tr>`);
+                        str+=(`<tr><td>Email:</td><td>${user.email}</td></tr>`);
+                        str+=(`<tr><td>Phone:</td><td>${user.phone}</td></tr>`);
+                        str+=(`<tr><td>Website:</td><td>${user.website}</td></tr>`);
+                        document.querySelector("#table").innerHTML=str;
+
+                        // document.querySelector("button").remove();
+                        let info = document.getElementById("info");
+                        if(info.children.length>1)
+                        {
+                            let child = info.children[1];
+                            info.removeChild(child);
+                        }
+                        let btn = document.createElement("button");
+                        btn.id="btn";
+                        btn.textContent="Show posts";
+                        document.getElementById("info").appendChild(btn);
+                        btn.addEventListener("click",(e)=>{
+                            document.getElementById("postsmain").innerHTML="<h1>User's posts:</h1>";
+                            document.getElementById("postsmain").innerHTML+="<div id='posts'></div>";
+                            let r = new XMLHttpRequest();
+                            r.open("get",`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+                            r.send();
+                            setTimeout(()=>{
+                                var posts = JSON.parse(r.response);
+                                for(post of posts)
+                                {
+                                let str = "<div class='post'>";
+                                str += `<h6>${post.title}</h6>`;
+                                str += `<p>${post.body}</p>`;
+                                str += "</div>";
+                                document.querySelector("#posts").innerHTML+=str;
+                                }
+                            },400)
+
+                        })
+                        }
+                    }, 400);
+                })
+            }
+        }, 400);
+
+       
+    </script>
+</body>
+</html>

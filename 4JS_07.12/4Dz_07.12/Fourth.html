@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function First(arr)
+        {
+            console.log("-------------------------");
+            arr.forEach(t=>console.log(`${t.Name} - ${t.CountOfPlace} - ${t.NameOfFaculty}`));
+            console.log("-------------------------");
+        }
+        function Second(arr,name)
+        {
+            let filtered = arr.filter(t=>t.NameOfFaculty==name);
+            if(filtered.length>0)
+            {
+                console.log(`Audience for ${name}: `);
+                First(filtered);
+            }
+            else
+            console.log(`Audience for ${name} not found`);
+        }
+        function Fourth(arr)
+        {
+            console.log(`Sort with place`);
+            arr.sort((a,b)=>a.CountOfPlace-b.CountOfPlace);
+            First(arr);
+        }
+        function Audience(name,countofplace,nameof)
+        {
+            this.Name = name;
+            this.CountOfPlace = countofplace;
+            this.NameOfFaculty=nameof;
+
+        }
+
+        let aud1 = new Audience("№125",16,"Astrology");
+        let aud2 = new Audience("Computer",13,"Informatics");
+        let aud3 = new Audience("Laboratory",14,"Chemical");
+        let aud4 = new Audience("№294",17,"Informatics");
+        let aud5 = new Audience("Tennis",10,"Astrology");
+        let arr=[];
+        arr.push(aud1,aud2,aud3,aud4,aud5);
+
+        First(arr);
+
+        Second(arr,"Informatics");
+        Second(arr,"Programists");
+
+
+        Fourth(arr);
+
+    </script>
+</body>
+</html>

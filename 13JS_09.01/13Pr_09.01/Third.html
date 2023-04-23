@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            background-color: peachpuff;
+        }
+        .colors{
+            display: flex;
+            align-items: baseline;
+            
+        }
+        .colors>div,.fruits>div{
+            width: 100px;
+            margin: 5px;
+            color:white;
+            text-align: center;
+        }
+        .colors>div:hover{
+            cursor: pointer;
+        }
+        h3{
+            margin-right: 15px;
+            color: black;
+        }
+        .red{
+            background-color: rgb(223, 46, 46);
+        }
+        .green{
+            background-color: rgb(57, 142, 57);
+        }
+        .orange{
+            background-color: rgb(219, 156, 39);
+        }
+        .yellow{
+            background-color: rgb(215, 215, 23);
+        }
+        .fruits{
+            display: grid;
+            grid-template-columns: repeat(3,110px);
+            grid-template-rows: repeat(3,30px);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="colors">
+        <h3>Select color</h3>
+        <div class="red" id="red">Red</div>
+        <div class="green" id="green">Green</div>
+        <div class="orange" id="orange">Orange</div>
+        <div class="yellow" id="yellow">Yellow</div>
+    </div>
+    <hr>
+    <h3>Fruits:</h3>
+    <div class="fruits">
+        <div class="red">Apple</div>
+        <div class="orange"> Mandarin</div>
+        <div class="yellow">PineApple</div>
+        <div class="green">Green paper</div>
+        <div class="red">Mango</div>
+        <div class="green">Pear </div>
+        <div class="orange">Orange </div>
+        <div class="red">Red peper</div>
+        <div class="green">Avocado</div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(()=>{
+            $("#red").bind("click",(e)=>{
+                $(".red").css("box-shadow",(ind,elem)=>{
+                    if(elem=="none"&&ind==1)
+                    {
+                        $(".red").css("box-shadow","0px 0px 13px 4px rgba(66, 68, 90, 1)");
+                    }
+                    else if(ind==1)
+                    {
+                        $(".red").css("box-shadow","none");
+                    }
+                });
+            });
+            
+            $("#green").bind("click",(e)=>{
+                $(".green").css("box-shadow",(ind,elem)=>{
+                    if(elem=="none"&&ind==1)
+                    {
+                        $(".green").css("box-shadow","0px 0px 13px 4px rgba(66, 68, 90, 1)");
+                    }
+                    else if(ind==1)
+                    {
+                        $(".green").css("box-shadow","none");
+                    }
+                });
+            });
+            $("#orange").bind("click",(e)=>{
+                $(".orange").css("box-shadow",(ind,elem)=>{
+                    if(elem=="none"&&ind==1)
+                    {
+                        $(".orange").css("box-shadow","0px 0px 13px 4px rgba(66, 68, 90, 1)");
+                    }
+                    else if(ind==1)
+                    {
+                        $(".orange").css("box-shadow","none");
+                    }
+                });
+            });
+            $("#yellow").bind("click",(e)=>{
+                $(".yellow").css("box-shadow",(ind,elem)=>{
+                    if(elem=="none"&&ind==1)
+                    {
+                        $(".yellow").css("box-shadow","0px 0px 13px 4px rgba(66, 68, 90, 1)");
+                    }
+                    else if(ind==1)
+                    {
+                        $(".yellow").css("box-shadow","none");
+                    }
+                });
+            });
+        })
+    </script>
+</body>
+</html>

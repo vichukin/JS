@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Button{
+            constructor(w,h,t)
+            {
+                this.Width=w;
+                this.Height=h;
+                this.Text=t;
+            }
+            Showbtn(){
+                document.write(`<button style="Width:${this.Width}px;Height:${this.Height}px;">${this.Text}</button>`);
+            }
+        }
+        class BootstrapButton extends Button{
+            constructor(w,h,t,c)
+            {
+                super(w,h,t);
+                this.color=c;
+            }
+            Showbtn(){
+                document.write(`<button style="Width:${this.Width}px;Height:${this.Height}px; background-color:${this.color};">${this.Text}</button>`);
+            }
+        }
+        let btn = new Button(200,200,"try button");
+        btn.Showbtn();
+        let colbtn = new BootstrapButton(200,200,"try color button","gray");
+        colbtn.Showbtn();
+    </script>
+</body>
+</html>

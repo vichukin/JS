@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ShowBlocks(n) {
+            for (i = 0; i < n; i++) {
+                document.write(`<div>Block ${i}</div>`);
+            }
+        }
+        function ShowBlocks(n, color) {
+            for (i = 0; i < n; i++) {
+                document.write(`<div style="color: ${color};">Block ${i}</div>`);
+            }
+        }
+        function parity(val) {
+            if (val % 2 == 0) {
+                parity = "even";
+            }
+            else
+                parity = "not even"
+        }
+        function Cube(x) {
+            return x ** 3;
+        }
+        function logX(x) {
+            console.log(x);
+        }
+        function logArguments() {
+            for (var i = 0; i < arguments.length; i++)
+                console.log(arguments[i]);
+        }
+        ShowBlocks(7, "red");
+        document.write(`<hr size='3';>`)
+        ShowBlocks(2);
+        parity(5);
+        console.log(Cube(6));
+        x = "huj";
+        logX(x);
+        logArguments(5, "hello", true, "Zopa");
+        logX(g);
+        var g = 2;
+        logX(g);
+        if (true) {
+            let a = 25;
+        }
+        function factorial(n) {
+            if (n === 1)
+                return 1;
+            return n * factorial(n - 1);
+        }
+    </script>
+</body>
+
+</html>

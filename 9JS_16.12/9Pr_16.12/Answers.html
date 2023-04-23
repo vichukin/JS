@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .first{
+            border: 2px solid rgb(0, 0, 0);
+            width: 100px;
+            display: flex;
+            height: 40px;
+            vertical-align: middle;
+            text-align: center;
+            
+        }
+        .btns{
+            display: flex;
+            flex-wrap: wrap;
+            width: 24px;
+            flex-direction: column;
+        }
+        .numb{
+            width: 80px;
+            
+        }
+        #fbtn{
+            transform:rotate(-90deg);
+            height: 20px;
+            width: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        #sbtn{
+            transform:rotate(90deg);
+            height: 20px;
+            width: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        #blocks{
+            display: flex;
+            flex-wrap: wrap
+        }
+        #palitra{
+            width: 100px;
+            height: 50px;
+            border: 2px solid black;
+            display: flex;
+            flex-wrap: wrap
+        }
+        .btn{
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .calculator{
+            width: 160px;
+            display: grid;
+            grid-template-rows: repeat(4,40px);
+            grid-template-columns: repeat(4,40px);
+            margin-top: 2px;
+        }
+        .btnp{
+            text-align: center;
+            width: 20px;
+            margin-top: 10px;
+        }
+        #calc{
+            width: 152px;
+        }
+        #last{
+            grid-column: 4;
+        }
+        #gotop
+        {
+            width: 2.5%;
+            height: 50px;
+            position: fixed;
+            top:94.3%;
+            right: 0;
+            background-color: lightsalmon;
+            text-align: center;
+            color: white;
+            display: none;
+            border: 1px solid grey;
+            
+        }
+        #gotop>h2{
+            margin-top: 10px;
+            position:initial;
+            
+            /* transform: rotate(270deg); */
+        }
+        #gotop:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onscroll="Seventh(event)" style="margin-right:3%;">
+    <h1>First</h1>
+    <div class="first">
+        <div class="numb">0</div>
+        <div class="btns">
+            <button id="fbtn" onclick="FirstUp()" >></button>
+            <button id="sbtn" onclick="FirstDown()">></button>
+        </div>
+    </div>
+    <hr>
+    <h1>Second</h1>
+    <div class="second">
+        <div id="blocks">
+            <div></div>
+        </div>
+        <button onclick="Second()">add block</button>
+    </div>  
+    <hr>
+    <h1>Third</h1>
+    <div>
+        <div id="palitra">
+        </div>
+        <p id="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi maiores, suscipit nemo iusto blanditiis ipsa. Accusantium debitis eius sequi, quisquam ipsam aut quae blanditiis laborum numquam magni explicabo perferendis! Necessitatibus repellendus soluta temporibus, nihil commodi totam vitae minus voluptatum. Nemo eos dolor sint perspiciatis eveniet rem eligendi quas. Vitae eos voluptatibus perferendis totam? Quae laboriosam optio velit esse enim tenetur molestias explicabo exercitationem, magni nam ipsum quas. Quos tenetur placeat rem saepe culpa nihil, facilis architecto facere illum nulla amet voluptas velit vero fugit laudantium voluptate pariatur totam dolor natus dolorem quaerat harum quod perferendis reprehenderit. Corrupti ex sequi est?</p>
+
+    </div>
+    <hr>
+    <h1>Sixth</h1>
+    <div>
+    <input id="calc">
+    <div class="calculator">
+        <button class="btn"><h3 class="btnp">7</h3></button>
+        <button class="btn"><h3 class="btnp">8</h3></button>
+        <button class="btn"><h3 class="btnp">9</h3></button>
+        <button class="btn"><h3 class="btnp">+</h3></button>
+        <button class="btn"><h3 class="btnp">4</h3></button>
+        <button class="btn"><h3 class="btnp">5</h3></button>
+        <button class="btn"><h3 class="btnp">6</h3></button>
+        <button class="btn"><h3 class="btnp">-</h3></button>
+        <button class="btn"><h3 class="btnp">1</h3></button>
+        <button class="btn"><h3 class="btnp">2</h3></button>
+        <button class="btn"><h3 class="btnp">3</h3></button>
+        <button class="btn"><h3 class="btnp">*</h3></button>
+        <button class="btn"><h3 class="btnp">0</h3></button>
+        <button class="btn" id="equal"><h3 class="btnp">=</button>
+        <button class="btn" id="clear"><h3 class="btnp">C</button>
+        <button class="btn" id="last"><h3 class="btnp">/</button>
+    </div>
+    </div>
+    <hr>
+    <h1>Seventh</h1>
+    <div>
+
+        <h1>Lorem ipsum dolor sit.</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis alias in eum magni maiores deleniti veniam soluta quidem dolorum magnam ea modi dolorem praesentium minus rem porro, accusamus, molestiae doloremque? Provident possimus dolorem cupiditate animi? Nostrum expedita dolores inventore, illo at quos voluptate tempore voluptatum doloribus animi beatae. Inventore at facere, in esse nisi minus, voluptates tenetur suscipit maxime id dolorum fugiat nulla qui unde eligendi cupiditate labore eius libero sit expedita! Accusantium cumque quod, saepe odio ratione quae libero repellat distinctio laborum, eligendi perferendis! Eius, laborum voluptatibus, dolor officiis facere assumenda maxime illo saepe esse, placeat corporis dolores neque.</p>
+        <h1>Aliquam sapiente ratione odio.</h1>
+        <p>Amet culpa aliquid ullam, aliquam, voluptate minus repellendus nisi quis delectus quae minima inventore laborum nulla similique cumque? Illo laudantium corporis reiciendis, molestias optio ipsam doloribus quas necessitatibus pariatur temporibus totam inventore ipsa veniam, sit id, suscipit non minima. At quod voluptas sequi expedita placeat ullam dignissimos corporis tenetur excepturi voluptates culpa perspiciatis animi, asperiores, minus doloremque suscipit? Excepturi culpa neque iusto sed eligendi soluta facilis dolores voluptatibus provident ducimus? Ratione, ab perferendis. Sit vel consequatur ut dignissimos quae placeat tenetur ab dolore accusamus fugiat id magni totam quos sapiente, veritatis officia expedita iusto quibusdam laborum amet consectetur iste repellendus?</p>
+        <h1>Quo recusandae commodi quos?</h1>
+        <p>Praesentium illo maiores cum ex rem! Minus voluptates nihil, quaerat hic itaque debitis animi numquam temporibus atque. Commodi nam modi hic id repellendus quae nesciunt placeat voluptatibus veniam nulla voluptatum a temporibus facere, aspernatur qui asperiores aliquam nostrum blanditiis recusandae deleniti, dolor earum eius? Iusto dicta ipsam facilis. Minima ea ipsum nesciunt magni eos officia, dicta at soluta fuga explicabo quidem dolor minus nisi odit, a qui ab eligendi amet cumque facere ut. Earum odit corrupti libero ducimus modi perferendis, eos quaerat. Dicta dolore architecto cumque. Commodi consequatur error incidunt libero repudiandae aspernatur aperiam. Libero ad ab nihil harum assumenda!</p>
+        <h1>Minus nesciunt qui eum!</h1>
+        <p>Dolores in, fugit quis fuga aliquid voluptate, voluptatum beatae perferendis eveniet, architecto ducimus? Corrupti deleniti numquam neque maxime cupiditate consequatur vero ex aliquam nam assumenda optio a, sapiente error veniam excepturi odit? Corrupti minima ea error consequatur voluptatibus veniam nemo quasi nihil, in dolor voluptas neque laudantium eum beatae porro earum culpa sit tempore dicta illo magnam pariatur ipsa. Dolore, quam placeat minus accusantium blanditiis nam at doloribus aspernatur illum expedita unde reprehenderit laborum laudantium iste, sunt quis ipsam debitis magni deleniti quos hic molestiae? Minima placeat quasi laudantium dolorem eaque officiis maiores mollitia amet, saepe quidem. Quis, nesciunt voluptates.</p>
+    </div>
+    <div id="gotop" onclick="SeventhS()"><h2>&uarr;</h2></div>
+    <script>
+        //console.log(eval("1+3+5-2*5/5"));
+        function FirstUp()
+        {
+            document.getElementsByClassName('numb')[0].textContent= +(document.getElementsByClassName('numb')[0].textContent)+1;
+        }
+        function FirstDown()
+        {
+            document.getElementsByClassName('numb')[0].textContent= +(document.getElementsByClassName('numb')[0].textContent)-1;
+        }
+        function Second()
+        {
+            let div = document.createElement("div");
+            div.addEventListener("click",(event)=>{
+                document.getElementById("blocks").removeChild(event.target);
+            });
+            div.style.backgroundColor=`rgb(${Math.floor(Math.random() * 255) + 1},${Math.floor(Math.random() * 255) + 1},${Math.floor(Math.random() * 255) + 1}`;
+            div.style.margin="5px";
+            div.style.width="100px";
+            div.style.height="50px";
+            console.log("dasd");
+            document.getElementById("blocks").appendChild(div);
+
+        }
+        addEventListener('DOMContentLoaded', (event) => {
+            let pal = document.getElementById("palitra");
+            for(let i =0;i<8;i++)
+            {
+                let div = document.createElement("div");
+                div.style.width="25px";
+                div.style.height="25px";
+                div.style.margin=0;
+                div.style.backgroundColor=`rgb(${Math.floor(Math.random() * 255) + 1},${Math.floor(Math.random() * 255) + 1},${Math.floor(Math.random() * 255) + 1}`;
+                div.addEventListener("click",(event)=>{
+                    document.getElementById("txt").style.color = event.target.style.backgroundColor;
+                });
+                pal.appendChild(div);
+
+            }
+
+            let calcs = document.getElementsByClassName("btn");
+            for(calc of calcs)
+            {
+                if(calc.id=="equal")
+                {
+                    calc.addEventListener("click",(event)=>{
+                        let val = document.getElementById("calc").value;
+                        document.getElementById("calc").value+= ` = ${eval(val)}`;
+                    })
+                }
+                else if(calc.id=="clear")
+                {
+                    calc.addEventListener("click",(event)=>{
+                            document.getElementById("calc").value="";
+                    })
+                }
+                else
+                {
+                    calc.addEventListener("click",(event)=>{
+                        if(document.getElementById("calc").value.indexOf("=")!=-1)
+                            document.getElementById("calc").value="";
+                        document.getElementById("calc").value+= event.target.textContent;
+                    })
+                }
+            }
+        });
+        function Seventh(e)
+        {
+            if (window.scrollY >= 100) {
+                // console.log(window);
+                document.getElementById("gotop").style.display="block";
+
+                // console.log( window.outerHeight);
+                
+            }
+            else
+            {
+                document.getElementById("gotop").style.display="none";
+            }
+        }
+        function SeventhS()
+        {
+            scroll(0,0);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex{
+            display: flex;
+            align-items: center;
+        }
+        img{
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            filter: grayscale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <h3>Star rating: </h3>
+        <div class="flex" id="stars"><img src="star.png" class="star"><img src="star.png"class="star"><img src="star.png"class="star"><img src="star.png"class="star"><img src="star.png"class="star">
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+       $(()=>{
+        $(".star").bind("click",(e)=>
+        {
+            $(e.target).prevAll().css("filter","grayscale(0)");
+            $(e.target).css("filter","grayscale(0)");
+            $(e.target).nextAll().css("filter","grayscale(1)");
+            // let star = e.target;
+            // let stars = document.getElementById("stars").childNodes;
+            // let elem =$.inArray(star,stars);
+            // for(let i =0;i<=elem;i++)
+            // {
+            //      stars[i].style.filter = "grayscale(0)";
+            // }
+            // for(let i = elem+1;i<stars.length;i++)
+            // {
+            //     stars[i].style.filter = "grayscale(1)";
+            // }
+
+        })
+       })
+    </script>
+</body>
+</html>

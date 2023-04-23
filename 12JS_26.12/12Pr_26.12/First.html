@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: flex;
+            width: 90%;
+            height: 600px;
+        }
+        textarea{
+            width: 43%;
+        }
+        button{
+            width: 4%;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+    <textarea id="txt1"></textarea>
+    <button onclick="First()"><h1>></h1></button>
+    <textarea id="txt2"></textarea>
+    </div>
+    <script>
+        function isJsonString(str) {
+        try {
+            JSON.parse(str);
+        } 
+        catch (e) {
+            return false;
+        }
+        return true;
+        }
+        function First()
+        {
+            
+            //[{"num":6,"den":5},{"num":3,"den":1}]
+            let txt1 = document.getElementById("txt1");
+            let txt2 = document.getElementById("txt2");
+            txt2.value="";
+            console.log(txt1.value);
+            if(isJsonString(txt1.value.split(new RegExp(' |\n')).join("")))
+            {
+                console.log(txt1.value.split(new RegExp(' |\n')));
+                let str='';
+                let count =0;
+                for(let item of txt1.value.split(new RegExp(' |\n')))
+                {
+                    let buf ='';
+                    for(let char of item)
+                    {
+                        
+                        if(char=="["||char=="{")
+                        {
+                                // for(let i =0;i<count;i++)
+                                //     buf+="\t"
+                            buf+=char+"\n";
+                            count++;
+                            for(let i =0;i<count;i++)
+                                buf+="\t"
+                        }
+                        else if(char==",")
+                        {
+                            buf+=char+"\n"
+                            for(let i =0;i<count;i++)
+                                buf+="\t"
+                        }
+                        else if(char=="}"||char=="]")
+                        {
+                            count--;
+                            
+                            
+                            buf+="\n";
+                            for(let i =0;i<count;i++)
+                                buf+="\t"
+                            buf+=char;
+                        }
+                        else if(char==":")
+                            buf+=char+" ";
+                        else 
+                        {
+                            
+                            buf+=char;
+                        }
+                        
+                    }
+                    str+=buf;
+                }
+                txt2.value=str;
+            }
+            else
+            {
+                alert("Not JSON string")
+            }
+
+            
+        }
+        
+    // console.log(isJsonString(`[{"Model":"X6","Color":"black","Manufacturer":"BMW","Year":2016,"Volume":123},{"Model":"X5","Color":"red","Manufacturer":"BMW","Year":2010,"Volume":80},{"Model":"Aventador SVJ","Color":"Yellow","Manufacturer":"Lamborghini","Year":2022,"Volume":150}]`));
+    </script>
+</body>
+</html>

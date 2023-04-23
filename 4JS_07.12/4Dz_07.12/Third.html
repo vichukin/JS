@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Print(arr,text)
+        {
+            let str="";
+            arr.forEach(t=>{
+                for(item in t)
+                {
+                    str+=(`${item}${t[item]} `);
+                }
+            })
+            document.write(`<p style='${str}'>${text}</p>`);
+        }
+         
+        function Style(style,prop)
+        {
+            this[`${style}`] = prop;
+        }
+
+        let size = new Style('font-size: ',`20px;`);
+        let color = new Style('color: ',`white;`);
+        let bcolor = new Style('background-color: ',`red;`);
+        let arr = [];
+        arr.push(size,color,bcolor);
+
+        Print(arr,"Darova its me! ");
+        
+
+
+    </script>
+</body>
+</html>
