@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sm{
+            font-size: 75%;
+        }
+        
+    </style>
+    <script src="PrintMachine.js"></script>
+    <script src="NewsLine.js"></script>
+    <script src="News.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row ">
+            <h2>First:</h2>
+            <div class="col col-4">
+                <div>
+                    <label for="fontSize">Font Size:</label>
+                    <input class="form-control" type="number" id="fontSize">
+                </div>
+                
+                <div>
+                    <label for="color">Color:</label>
+                    <input class="form-control form-control-color" type="color" id="color">
+                </div>
+                
+                <div>
+                    <label for="fontFamily">Font Family:</label>
+                    <input class="form-control" type="text" id="fontFamily">
+                </div>
+                
+                <div>
+                    <label for="text">Text:</label>
+                    <input class="form-control" type="text" id="text">
+                </div>
+
+                
+                <div><button onclick="printText()" class="btn btn-outline-secondary w-100">Print</button></div>
+            </div>
+            <div class="col col-4">
+                <div id="result">
+    
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h2>Second:</h2>
+            <div class="col col-4">
+                <div class="col col-4">
+                    <div>
+                        <label for="fontFamily">Take date of news:</label>
+                        <input class="form-control"  type="date" id="date">
+                    </div>
+                    <div><button onclick="printNews()" class="btn btn-outline-secondary w-100">Print</button></div>
+                </div>
+            </div>
+            <div class="col col-4">
+                <div id="newsResult">
+    
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h2>Third:</h2>
+            
+            <div class="col col-4">
+                <div class="mb-2">
+                    <button class="btn btn-outline-primary mb-2 w-100" onclick="sortNews()">Sort by date</button>
+                </div>
+                <div class="mb-2 d-flex">
+                    <label class="w-100 d-flex p-auto">
+                        Tag:
+                        <input type="text" id="filter" class="form-control ms-2">
+                    </label>
+                    <button class="btn btn-outline-primary w-50" onclick="filterNews()">Filter</button>
+                    <button class="btn btn-outline-secondary w-50" onclick="clearFilter()">Clear</button>
+                </div>
+                <h4 id="filterText"></h4>
+                <div id="newsLine">
+                    
+                </div>
+            </div>
+            <div class="col col-2"></div>
+            <div class="col col-4">
+                <h2>Create News</h2>
+                <form onsubmit="createNews(event)" id="createNewsForm">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="text">Text:</label>
+                        <textarea class="form-control" id="text" rows="3" required></textarea>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="tags">Tags (comma-separated):</label>
+                        <input type="text" class="form-control" id="tags">
+                    </div>
+            
+                    <div class="form-group mb-2">
+                        <label for="date">Date:</label>
+                        <input type="date" class="form-control" id="date" required>
+                    </div>
+            
+                    <div ><button   class="btn btn-primary w-100">Create News</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function printText() {
+        let fontSize = document.getElementById("fontSize").value;
+        let color = document.getElementById("color").value;
+        let fontFamily = document.getElementById("fontFamily").value;
+        let text = document.getElementById("text").value;
+        let res = document.getElementById("result");
+        let printMachine = new PrintMachine(fontSize, color, fontFamily);
+        
+        printMachine.print(text,res);
+    }
+    function printNews()
+    {
+        let newsTags = [];
+        newsTags.push("Technology", "JavaScript")
+        let date = document.getElementById("date").value;
+    
+        let news = new News("Breaking News", "Some important news", newsTags, date);
+        news.print(document.getElementById("newsResult"))
+    }
+    let newsArray = [
+    new News("Tech News", "Description 1", ["Technology", "Innovation"], "2023-01-15"),
+    new News("Entertainment Buzz", "Description 4", ["Entertainment", "Movies"], "2023-01-02"),
+    new News("Sports Update", "Description 2", ["Sports", "Football"], "2023-01-10"),
+    new News("Science Breakthrough", "Description 5", ["Science", "Discovery"], "2022-12-28"),
+    new News("Health Tips", "Description 3", ["Health", "Wellness"], "2023-01-05")
+];
+    let newsLineDiv = document.getElementById("newsLine");
+    let newsLine = new NewsLine(newsArray,newsLineDiv);
+    newsLine.printNews();
+    function deleteNew(e)
+    {
+        e.preventDefault();
+        let id = e.currentTarget.id.value;
+        newsLine.deleteNew(id)
+    }
+    function sortNews()
+    {
+        console.log("sorted")
+        newsLine.sortByDate();
+    }
+    function createNews(e) {
+        e.preventDefault();
+        let form = e.currentTarget;
+        let title = form.title.value;
+        let text = form.text.value;
+        let tags = form.tags.value.split(',').map(tag => tag.trim());
+        let date = form.date.value;
+        let news = new News(title, text, tags, date);
+
+        newsLine.addNew(news)
+    }
+    function filterNews()
+    {
+        let filter = document.getElementById("filter").value;
+        newsLine.findByTag(filter)
+    }
+    function clearFilter()
+    {
+        newsLine.clearFilter();
+    }
+</script>
+</html>
+
