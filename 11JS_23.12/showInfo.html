@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5 pt-5">
+            <div class="col col-2"></div>
+            <div class="col col-8">
+                <form onsubmit="saveUserInfo(event)" id="showInfo">
+                <div class="row">
+                    <p class="text-end" id="textBar"> </p>
+                    
+                    <hr>
+                    <h3 class="text-center" >User info</h3>
+                    
+                    <div class="col col-5">
+                        <div class="form-group mb-2">
+                            <label class="w-100">First Name:
+                                <input type="text" form="showInfo" name="firstname" class="form-control">
+                            </label>
+                            <div class="text-danger" id="firstnameErrors">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="w-100">Year of birth:
+                                <input type="text" form="showInfo" name="yearOfBirth" class="form-control">
+                            </label>
+                            <div class="text-danger" id="yearErrors">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="w-100">Phone number:
+                                <input type="text" form="showInfo" name="phone" class="form-control">
+                            </label>
+                            <div class="text-danger" id="phoneErrors">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-2"></div>
+                    <div class="col col-5">
+                        <div class="form-group mb-2">
+                            <label class="w-100">Last Name:
+                                <input type="text" form="showInfo" name="lastname" class="form-control">
+                            </label>
+                            <div class="text-danger" id="lastnameErrors">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="w-100">Gender:
+                                <!-- <input type="text" form="showInfo" name="gender" class="form-control"> -->
+                                <select name="gender" form="showInfo" class="form-select">
+                                    <option >Male</option>
+                                    <option >Female</option>
+                                </select>
+                            </label>
+                            <div class="text-danger" id="genderErrors">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="w-100">Skype:
+                                <input type="text" form="showInfo" name="skype" class="form-control">
+                            </label>
+                            <div class="text-danger" id="skypeErrors">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+                <button class="btn btn-outline-primary w-100" form="showInfo">Save</button>
+            </div>
+            <div class="col col-2"></div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        if(!getCookie("email")&&!getCookie("pas"))
+        {
+            window.location="index.html"
+        }
+        let text = document.getElementById("textBar");
+    text.innerHTML= `Hello, ${getCookie("email")} <button class="btn btn-outline-secondary w-25" type="button" onclick="Exit()">Exit</button>`
+    let firstnameInput = document.querySelector("input[name='firstname']");
+    let lastnameInput = document.querySelector("input[name='lastname']");
+    let yearOfBirthInput = document.querySelector("input[name='yearOfBirth']");
+    let phoneInput = document.querySelector("input[name='phone']");
+    let genderSelect = document.querySelector("select[name='gender']");
+    let skypeInput = document.querySelector("input[name='skype']");
+
+    let savedFirstname = getCookie("firstname");
+    let savedLastname = getCookie("lastname");
+    let savedYearOfBirth = getCookie("yearOfBirth");
+    let savedPhone = getCookie("phone");
+    let savedGender = getCookie("gender");
+    let savedSkype = getCookie("skype");
+
+    if (savedFirstname) {
+        firstnameInput.value = savedFirstname;
+    }
+    if (savedLastname) {
+        lastnameInput.value = savedLastname;
+    }
+    if (savedYearOfBirth) {
+        yearOfBirthInput.value = savedYearOfBirth;
+    }
+    if (savedPhone) {
+        phoneInput.value = savedPhone;
+    }
+    if (savedGender) {
+        genderSelect.value = savedGender;
+    }
+    if (savedSkype) {
+        skypeInput.value = savedSkype;
+    }
+});
+    
+    let firstnameErrors = document.getElementById("firstnameErrors");
+    let yearErrors = document.getElementById("yearErrors");
+    let phoneErrors = document.getElementById("phoneErrors");
+    let lastnameErrors = document.getElementById("lastnameErrors");
+    let genderErrors = document.getElementById("genderErrors");
+    let skypeErrors = document.getElementById("skypeErrors");
+    function saveUserInfo(e) {
+        e.preventDefault();
+        let form = e.currentTarget;
+        let firstname = form.firstname.value;
+        let lastname = form.lastname.value;
+        let yearOfBirth = form.yearOfBirth.value;
+        let phone = form.phone.value;
+        let gender = form.gender.value;
+        let skype = form.skype.value;
+
+        let confirm = true;
+
+        firstnameErrors.innerHTML=""
+        yearErrors.innerHTML=""
+        phoneErrors.innerHTML=""
+        lastnameErrors.innerHTML=""
+        genderErrors.innerHTML=""
+        skypeErrors.innerHTML=""
+
+    if (firstname === "") {
+        firstnameErrors.innerHTML = `<p class='m-0'>First name is a required field!</p>`;
+        confirm = false;
+    } else if (!/^[a-zA-Z\s']{1,20}$/.test(firstname)) {
+        firstnameErrors.innerHTML = `<p class='m-0'>First name can only contain letters and should not exceed 20 characters!</p>`;
+        confirm = false;
+    }
+
+    if (lastname === "") {
+        lastnameErrors.innerHTML = `<p class='m-0'>Last name is a required field!</p>`;
+        confirm = false;
+    } else if (!/^[a-zA-Z\s']{1,20}$/.test(lastname)) {
+        lastnameErrors.innerHTML = `<p class='m-0'>Last name can only contain letters and should not exceed 20 characters!</p>`;
+        confirm = false;
+    }
+
+
+    if (yearOfBirth === "") {
+        yearErrors.innerHTML = `<p class='m-0'>Year of birth is a required field!</p>`;
+        confirm = false;
+    } else {
+        let currentYear = new Date().getFullYear();
+        if ( isNaN(yearOfBirth)|| yearOfBirth < 1900 || yearOfBirth > currentYear) {
+            console.log(yearOfBirth)
+            yearErrors.innerHTML = `<p class='m-0'>Invalid year of birth!</p>`;
+            confirm = false;
+        }
+    }
+
+    if (gender === "") {
+        genderErrors.innerHTML = `<p class='m-0'>Gender is a required field!</p>`;
+        confirm = false;
+    }
+
+    if (phone !== "" && !/^[\d\s()+-]{10,12}$/.test(phone)) {
+        phoneErrors.innerHTML = `<p class='m-0'>Invalid phone number!</p>`;
+        confirm = false;
+    }
+
+    if (skype !== "" && !/^[a-zA-Z0-9.-_]{0,}$/.test(skype)) {
+        skypeErrors.innerHTML = `<p class='m-0'>Invalid characters in Skype!</p>`;
+        confirm = false;
+    }
+
+        if (confirm) {
+            setCookie("firstname", firstname, 1);
+            setCookie("lastname", lastname, 1);
+            setCookie("yearOfBirth", yearOfBirth, 1);
+            setCookie("phone", phone, 1);
+            setCookie("gender", gender, 1);
+            setCookie("email", email, 1);
+            setCookie("skype", skype, 1);
+        }
+    }
+    function setCookie(name, value, hours) {
+        var expires = new Date();
+        expires.setTime(expires.getTime() + hours * 60 * 60 * 1000);
+        document.cookie = name + "=" + value + ";expires=" + expires.toUTCString();
+    }
+    function getCookie(name) {
+    var cookies = document.cookie.split(';');
+        for (let item of cookies) {
+            var cookie = item.trim();
+            if (cookie.indexOf(name + '=') === 0) {
+                return cookie.substring(name.length + 1, cookie.length);
+            }
+        }
+        return false;
+    } 
+    function Exit()
+    {
+        var cookieNames = ["email", "pas", "firstname", "lastname", "yearOfBirth", "phone", "gender", "skype"];
+
+        for (let name of cookieNames) {
+            setCookie(name,null,-1);
+            
+        }
+        window.location="showInfo.html"
+    }
+</script>
+</html>

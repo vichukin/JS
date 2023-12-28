@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col col-4"></div>
+            <div class="col col-4 mt-5 pt-5">
+                <h2 class="text-center">Registration</h2>
+                <form onsubmit="checkForm(event)">
+                    <div class="form-group mb-2">
+                        <label class="w-100">Email:
+                            <input type="text" name="email" class="form-control">
+                        </label>
+                        <div class="text-danger" id="emailErrors">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="w-100">Password:
+                            <input type="password" name="pas" class="form-control">
+                        </label>
+                        <div class="text-danger" id="pasErrors">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="w-100">Reapeat:
+                            <input type="password" name="confPas" class="form-control">
+                        </label>
+                        <div class="text-danger" id="confPasErrors">
+                            
+                        </div>
+                    </div>
+                    <div><button class="btn btn-outline-success w-100">Sign up</button></div>
+                </form>
+            </div>
+            <div class="col col-4"></div>
+        </div>
+    </div>
+</body>
+<script>
+    if(getCookie("email")&&getCookie("pas"))
+    {
+        console.log("true")
+        window.location = "showInfo.html"
+    }
+    let emailErrors = document.getElementById("emailErrors");
+    let pasErrors=document.getElementById("pasErrors");
+    let confPasErrors=document.getElementById("confPasErrors");
+    function checkForm(e)
+    {
+        e.preventDefault();
+        let form = e.currentTarget;
+        let email = form.email.value;
+        let pas = form.pas.value;
+        let confPas = form.confPas.value;
+        let emailRegex = /^[a-zA-Z._-]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+        emailErrors.innerHTML="";
+        pasErrors.innerHTML="";
+        confPasErrors.innerHTML="";
+        let confirm = true;
+        if(email=="")
+        {
+            emailErrors.innerHTML+=`<p class='m-0'>Email required!</p>`
+            confirm=false;
+        }
+        if (!emailRegex.test(email)) {
+            emailErrors.innerHTML+=`<p class='m-0'>Email has wrong characters or not full!</p>`
+            confirm=false;
+        }
+        if(email.indexOf('@') < 3)
+        {
+            emailErrors.innerHTML+=`<p class='m-0'>Must be at least 3 characters before @!</p>`
+            confirm=false;
+        }
+        if (pas === "") {
+            pasErrors.innerHTML += `<p class='m-0'>Password required!</p>`;
+            confirm = false;
+        }
+
+        if (pas.length < 6) {
+            pasErrors.innerHTML += `<p class='m-0'>Password must be at least 6 characters!</p>`;
+            confirm = false;
+        }
+
+        if (!/[a-z]/.test(pas) || !/[A-Z]/.test(pas)) {
+            console.log(pas);
+            pasErrors.innerHTML += `<p class='m-0'>Password must contain at least one lowercase letter and one uppercase letter!</p>`;
+            confirm = false;
+        }
+
+        if (!/\d/.test(pas)) {
+            pasErrors.innerHTML += `<p class='m-0'>Password must contain at least one digit!</p>`;
+            confirm = false;
+        }
+
+        if (confPas === "") {
+            confPasErrors.innerHTML += `<p class='m-0'>Confirm Password required!</p>`;
+            confirm = false;
+        }
+        if (pas !== confPas) {
+                confPasErrors.innerHTML += `<p class='m-0'>Passwords do not match!</p>`;
+            confirm = false;
+        }
+
+        if (confirm) {
+            setCookie("email",email,1);
+            setCookie("pas",pas,1);
+            window.location="showInfo.html"
+        }
+    }
+    function setCookie(name, value, hours) {
+        var expires = new Date();
+        expires.setTime(expires.getTime() + hours * 60 * 60 * 1000);
+        document.cookie = name + "=" + value + ";expires=" + expires.toUTCString();
+    }
+    function getCookie(name) {
+    var cookies = document.cookie.split(';');
+        for (let item of cookies) {
+            var cookie = item.trim();
+            if (cookie.indexOf(name + '=') === 0) {
+                return true;
+            }
+        }
+        return false;
+    }  
+</script>
+</html>
